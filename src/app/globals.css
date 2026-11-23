@@ -46,3 +46,8 @@ dialog form{display:grid;gap:10px}
 .btn.ghost{background:var(--soft);color:var(--text)}
 dialog h2{margin-bottom:4px}
 footer{text-align:center;color:var(--mute);font-size:13px;padding:24px;margin-top:32px;background:var(--lav);border-radius:28px 28px 0 0}
+.actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:12px 0 0}
+.sharebox{display:flex;flex-wrap:wrap;gap:8px;width:100%}
+.pill{background:var(--soft);color:var(--text);border:1.5px solid var(--line);border-radius:999px;padding:7px 16px;cursor:pointer;font-weight:600;text-decoration:none!important;transition:transform .15s,border-color .15s}
+.pill:hover{transform:translateY(-1px);border-color:var(--acc)}
+.pill.on{background:var(--acc);border-color:var(--acc);color:#fff}

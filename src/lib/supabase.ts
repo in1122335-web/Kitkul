@@ -12,6 +12,6 @@ export const publicUrl = (bucket: 'videos' | 'thumbnails', path: string) =>
 export type Video = {
   id: string; title: string; uploader: string; description: string;
   video_path: string; thumb_path: string | null; duration: number;
-  views: number; created_at: string;
+  views: number; likes: number; dislikes: number; shares: number; created_at: string;
 };
 export type Comment = { id: string; video_id: string; author: string; body: string; created_at: string };

@@ -4,6 +4,7 @@ import { date, num } from '@/lib/format';
 import VideoCard from '@/components/VideoCard';
 import Comments from '@/components/Comments';
 import ViewCounter from '@/components/ViewCounter';
+import Actions from '@/components/Actions';
 
 export const revalidate = 0;
 
@@ -25,6 +26,7 @@ export default async function Watch({ params }: { params: { id: string } }) {
         <video controls preload="metadata" playsInline poster={thumb} src={publicUrl('videos', v.video_path)} />
         <h1>{v.title}</h1>
         <div className="mute">โดย {v.uploader} · {num(v.views)} ครั้ง · {date(v.created_at)}</div>
+        <Actions id={v.id} title={v.title} likes={v.likes} dislikes={v.dislikes} shares={v.shares} />
         <div className="desc">{v.description || '(ไม่มีคำอธิบาย)'}</div>
         <Comments videoId={v.id} initial={(cr.data ?? []) as Comment[]} />
       </div>

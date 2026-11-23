@@ -6,8 +6,17 @@ import { supabase } from '@/lib/supabase';
 export default function ViewCounter({ id }: { id: string }) {
   useEffect(() => {
     const k = `kk_v_${id}`;
-    try { if (sessionStorage.getItem(k)) return; sessionStorage.setItem(k, '1'); } catch {}
-    supabase.rpc('increment_views', { vid: id });
+    try {
+      if (sessionStorage.getItem(k)) return;
+      sessionStorage.setItem(k, '1');
+    } catch {}
+    // ต้องมี .then() เพราะ query ของ Supabase จะไม่ถูกส่งจนกว่าจะมีคนรอผลลัพธ์
+    supabase.rpc('increment_views', { vid: id }).then(({ error }) => {
+      if (error) {
+        console.error('increment_views failed:', error.message);
+        try { sessionStorage.removeItem(k); } catch {}
+      }
+    });
   }, [id]);
   return null;
 }
